@@ -8,5 +8,5 @@ setup(
     author_email='hello@sylwiamielnicka.com',
     url='https://github.com/SylwiaOliwia2/xgboost-AutoTune',
     py_modules=['xgboost_autotune'],
-    install_requires=['sklearn', 'numpy', 'copy'],
+    install_requires=['sklearn', 'numpy'],
 )
