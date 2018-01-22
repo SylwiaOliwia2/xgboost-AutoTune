@@ -3,8 +3,9 @@ Package allows for auto-tuninng xgbooxt (XGBRegressor) parameters. Model usues G
 **Much more precise README and another GBM models comming soon**.
 
 ## Instalation
-At this moment please download `Heuristic_choose_parameters.py` manually. 
-**Installation via pip comming soon.**
+`pip3 install git+git://github.com/SylwiaOliwia2/xgboost-AutoTune@choose-params`
+
+Note that xgboost-AutoTune depends on Numpy and Sklearn.
 
 ## Create scorer
 Before running you need to define scoring. The easier way is using `sklearn.metrics.make_scorer`. You can see example in `custom_metrics.py`.
