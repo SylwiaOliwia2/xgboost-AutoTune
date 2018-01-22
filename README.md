@@ -6,8 +6,12 @@ Package allows for auto-tuninng xgbooxt (XGBRegressor) parameters. Model usues G
 At this moment please download `Heuristic_choose_parameters.py` manually. 
 **Installation via pip comming soon.**
 
-## Running
+## Create scorer
+Before running you need to define scoring. The easier way is using `sklearn.metrics.make_scorer`. You can see example in `custom_metrics.py`.
+
+## Run
 To run it type in your code:
+`from xgboost_autotune import fit_parameters`
 
 `fitted_model = fit_parameters(xgb_model, {}, X_train, y_train, min_loss = 0.01, scoring=rmlse_score, n_folds=5)`
 
