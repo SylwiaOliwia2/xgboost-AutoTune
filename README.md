@@ -17,16 +17,16 @@ from xgboost_autotune import fit_parameters
 from sklearn.metrics import make_scorer, accuracy_score
 
 accuracy = make_scorer(accuracy_score, greater_is_better=True)
-fitted_model = fit_parameters(model, {}, X_train, y_train, min_loss = 0.01, scoring=accuracy, n_folds=5)
+fitted_model = fit_parameters(initial_model = xgboost.XGBRegressor(), initial_params_dict = {}, X_train = X, y_train = y_train, min_loss = 0.01, scoring=accuracy, n_folds=5)
 ```
 
 ### Parameters:
-* **model** - `xgboost.XGBRegressor` model. You can leave parameters empty:
+* **initial_model** - `xgboost.XGBRegressor` model. You can leave parameters empty:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`model = xgboost.XGBRegressor()` or predefine them (they will be used, until better params will be chosen):
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`model = xgboost.XGBRegressor(max_depth = 7, learning_rate = 0.1,  colsample_bytree=0.7)`
-* **{}** - dictionary of values to be tested. If empty (as in the example)- domain parameters' arrays will be 
+* **initial_params_dict** - dictionary of values to be tested. If empty (as in the example)- domain parameters' arrays will be 
 used for search. If you will overwrite domain parameters, provide arrays of values in the dictionary, ex:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`{'susample': [0.6, 0.8, 1], 'max_depth': [3,5,7]'}`.
@@ -35,7 +35,11 @@ used for search. If you will overwrite domain parameters, provide arrays of valu
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`{'susample': [0.8], 'max_depth': [3,5,7]'}` will use `subsample` = 0.8 and wouldn't look for better `subsample` value.
 
-* **min_loss**- minimum scoring loss required for further parameter research (in neighbourhood of the best value).
+* **X_train** - pandas DataFrame, input variables
+* **y_train** - pandas series, labels for prediction
+* **min_loss** - minimum scoring loss required for further parameter research (in neighbourhood of the best value).
 * **scoring** - used to evalueate the best model. See **Create scorer** section above.
 * **n_folds** - number of folds used in GridSearchCV
 
+## More detailed description
+In progres.
