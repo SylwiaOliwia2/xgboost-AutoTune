@@ -52,10 +52,10 @@ used for search. If you will overwrite domain parameters, provide arrays of valu
 ### General note
 Full GridSearch is time- and memory-demanding, so xgboost-AutoTune tunes parameters in the following steps (one by one, from the most robust to the less): 
 1. n_estimators
-2. max_depth, min_child_weight, min_samples_split, num_leaves 
-3. Gamma, min_samples_leaf, min_child_samples, min_split_gain                         
-4. n_estimators, max_features 
-5. Subsample, colsample_bytree, feature_fraction 
+2. max_depth, min_child_weight
+3. Gamma                       
+4. n_estimators
+5. Subsample, colsample_bytree
 6. reg_alpha, reg_lambda 
 7. n_estimators and learning_rate 
 
@@ -79,9 +79,9 @@ In each iteration, if chosing the best value from array has improved **scoring**
 
 * If the best value in the previous array had neighbours, then new neighbours will be average between best value and it's previous neighbours. Example: if the best value from `n_estimators`: `[30, 50, 70, 100, 150, 200, 300]` will be 70, than the new array to search will be `[60, 70, 85]`. 
 
-* If the best value is the lowest from the array, it's new value will be `2*best_value` unless it's bigger then minimal (otherwise minimal posible value). 
+* If the best value is the lowest from the array, it's new value will be `2*best_value- following_value` unless it's bigger then minimal (otherwise minimal posible value). 
 
-* The the best value was the biggest in the array, it will be treated in the same way, as the lowest one. 
+* The the best value was the biggest in the array, it will be treated in the similar way, as the lowest one. 
 
 If new values are float and int is required, values are rounded. 
 
